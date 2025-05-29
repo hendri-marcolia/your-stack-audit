@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.app-body {
+  display: flex;
+  flex-direction: row;
+  height: 90vh;
+}
+
+.component-palette {
+  width: 20%;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.canvas-area {
+  width: 80%;
+  background-color: #e0e0e0;
+  padding: 20px;
+}
