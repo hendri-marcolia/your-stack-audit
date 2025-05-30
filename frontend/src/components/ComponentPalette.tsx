@@ -5,10 +5,14 @@ interface ComponentProps {
   name: string;
 }
 
+interface ComponentPaletteProps {
+  onAddComponent: (component: ComponentProps) => void;
+  suggestedComponents: ComponentProps[];
+}
+
 interface PaletteItemProps extends ComponentProps {
   onAddComponent: (component: ComponentProps) => void;
 }
-
 
 function PaletteItem({ name, onAddComponent }: PaletteItemProps) {
   const [{ isDragging }, drag] = useDrag(() => ({
@@ -37,15 +41,12 @@ function PaletteItem({ name, onAddComponent }: PaletteItemProps) {
   );
 }
 
-interface ComponentPaletteProps {
-  onAddComponent: (component: ComponentProps) => void;
-}
-
-function ComponentPalette({ onAddComponent }: ComponentPaletteProps) {
+function ComponentPalette({ onAddComponent, suggestedComponents }: ComponentPaletteProps) {
   const components: ComponentProps[] = [
     { name: 'Server' },
     { name: 'Database' },
     { name: 'Firewall' },
+    ...suggestedComponents,
   ];
 
   return (
