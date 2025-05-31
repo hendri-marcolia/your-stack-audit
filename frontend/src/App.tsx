@@ -1,24 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import ComponentPalette from './components/ComponentPalette.tsx';
+import CanvasArea from './components/CanvasArea.tsx';
+
+interface ComponentProps {
+  name: string;
+}
 
 function App() {
+  const [prompt, setPrompt] = useState('');
+  const [suggestedComponents, setSuggestedComponents] = useState<ComponentProps[]>([]);
+
+  const handleAddComponent = (component: ComponentProps) => {
+    console.log(`Adding component: ${component.name}`);
+  };
+
+  const handleGetSuggestions = () => {
+    // Placeholder LLM integration
+    const suggestions = [{ name: 'Load Balancer' }, { name: 'Cache' }];
+    setSuggestedComponents(suggestions);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Stack Builder MVP</h1>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DndProvider backend={HTML5Backend}>
+      <div className="App">
+        <header className="App-header">
+          <h1>Stack Builder MVP</h1>
+        </header>
+        <input
+          type="text"
+          placeholder="Enter LLM prompt"
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+        />
+        <button onClick={handleGetSuggestions}>Get Suggestions</button>
+        <div className="app-body">
+          <ComponentPalette onAddComponent={handleAddComponent} suggestedComponents={suggestedComponents} />
+          <CanvasArea />
+        </div>
+      </div>
+    </DndProvider>
   );
 }
 
