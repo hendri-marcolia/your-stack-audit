@@ -35,7 +35,7 @@ function App() {
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
         />
-        <button onClick={handleGetSuggestions}>Get Suggestions</button>
+        <button onClick={handleGetSuggestions}>Get Suggestion for Component</button>
         <div className="app-body">
           <ComponentPalette onAddComponent={handleAddComponent} suggestedComponents={suggestedComponents} />
           <CanvasArea />
