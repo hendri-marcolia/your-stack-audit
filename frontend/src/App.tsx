@@ -27,7 +27,7 @@ function App() {
     <DndProvider backend={HTML5Backend}>
       <div className="App">
         <header className="App-header">
-          <h1>Stack Builder MVP</h1>
+          <h1>Stack Builder</h1>
         </header>
         <input
           type="text"
