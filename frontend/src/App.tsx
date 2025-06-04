@@ -27,7 +27,7 @@ function App() {
     <DndProvider backend={HTML5Backend}>
       <div className="App">
         <header className="App-header">
-          <h1>Stack Builder MVP</h1>
+          <h1>Stack Builder</h1>
         </header>
         <input
           type="text"
@@ -35,7 +35,7 @@ function App() {
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
         />
-        <button onClick={handleGetSuggestions}>Get Suggestions</button>
+        <button onClick={handleGetSuggestions}>Get Suggestion for Component</button>
         <div className="app-body">
           <ComponentPalette onAddComponent={handleAddComponent} suggestedComponents={suggestedComponents} />
           <CanvasArea />
